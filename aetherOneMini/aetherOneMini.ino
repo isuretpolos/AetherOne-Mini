@@ -12,14 +12,14 @@
    RX - red - GPIO 0
    TX - green - GPIO 1
 */
+#define ARRAY_SIZE(x) sizeof(x)/sizeof(x[0])
 
 class AetherOneForArduino {
 
   private:
+
     boolean onOff = true;
-    String colour[4] = { "Blue", "Red",
-                         "Orange", "Yellow"
-                       };
+
   public:
 
     void init() {
@@ -64,19 +64,34 @@ class AetherOneForArduino {
       long randNumber = random(max);
       return randNumber;
     }
+
+    String analyseArray(int ratesLength) {
+      
+      int maxHit = 10;
+      int lastBiggestHit = 0;
+      int hits[ratesLength] = {};
+      int selectedHit = 0;
+      
+      while(true) {
+        int randomX = randomInt(ratesLength);
+
+        if (hits[randomX] == NULL) {
+          hits[randomX] = 1;
+        } else {
+          hits[randomX] = hits[randomX] + 1;
+        }
+
+        if (hits[randomX] >= maxHit) {
+          selectedHit = randomX;
+          break;
+        }
+      }
+
+      String thisString = String(selectedHit);
+      
+      return thisString;
+    }
 };
 
-AetherOneForArduino *aetherOne;
-
-void setup() {
-  aetherOne = new AetherOneForArduino();
-  aetherOne->init();
-  Serial.begin(9600);
-}
-
-void loop() {
-
-  Serial.println(aetherOne->randomInt(1000));
-}
 
 
