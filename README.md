@@ -1,2 +1,2 @@
 # AetherOne-Mini
-Arduino Mini based standalone Digital Radionics Device
+Arduino Nano based standalone Digital Radionics Device
