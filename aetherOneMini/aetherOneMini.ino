@@ -1,3 +1,5 @@
+#include <Wire.h>
+
 /**
    Copyright by Isuret Polos 2019
 
@@ -9,9 +11,10 @@
    - Port: see what changes after installing the driver and reconnecting the board
    - Programmer: AVR ISP
 
-   RX - red - GPIO 0
-   TX - green - GPIO 1
+  ------------------------------------------
+  For the LCD Display take a look here: https://www.arduino.cc/en/Tutorial/LiquidCrystalDisplay
 */
+
 #define ARRAY_SIZE(x) sizeof(x)/sizeof(x[0])
 
 class AetherOneForArduino {
